@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VisaPro Consultancy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --bg2: #f8f8f6;
+      --text: #111110;
+      --text2: #6b6b65;
+      --border: #e8e8e4;
+      --green: #1a6b4a;
+      --green-dark: #1a2e24;
+      --green-light: #e8f5ef;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      font-size: 15px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky; top: 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 600;
+    }
+    .nav-logo span { color: var(--green); }
+    .nav-cta {
+      font-size: 12px; font-weight: 500;
+      padding: 8px 18px;
+      border: 0.5px solid var(--text);
+      border-radius: 100px;
+      background: transparent; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover, .nav-cta:active { background: var(--text); color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 3.5rem 1.25rem 3rem;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 500;
+      color: var(--green); background: var(--green-light);
+      padding: 5px 14px; border-radius: 100px;
+      margin-bottom: 1.75rem;
+      letter-spacing: 0.8px; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px; font-weight: 500; line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { color: var(--green); font-style: italic; }
+    .hero p {
+      font-size: 15px; line-height: 1.75;
+      color: var(--text2); font-weight: 300;
+      margin-bottom: 2.25rem;
+    }
+    .hero-actions {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .btn-primary {
+      background: var(--green-dark); color: #fff;
+      padding: 15px 28px; border-radius: 100px;
+      font-size: 14px; font-weight: 500;
+      border: none; cursor: pointer;
+      width: 100%; transition: background 0.2s;
+    }
+    .btn-primary:active { background: var(--green); }
+    .btn-ghost {
+      background: transparent; color: var(--text2);
+      padding: 14px 26px; border-radius: 100px;
+      font-size: 14px; font-weight: 400;
+      border: 0.5px solid var(--border);
+      cursor: pointer; width: 100%;
+      transition: all 0.2s;
+    }
+    .btn-ghost:active { background: var(--bg2); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      padding: 1.25rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border);
+    }
+    .trust-item {
+      text-align: center; padding: 1rem 0.5rem;
+      background: var(--bg);
+    }
+    .trust-item .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px; font-weight: 600; color: var(--green);
+      line-height: 1;
+    }
+    .trust-item .lbl {
+      font-size: 10px; color: var(--text2);
+      letter-spacing: 0.5px; text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section { padding: 3rem 1.25rem; }
+    .section-label {
+      font-size: 10px; text-transform: uppercase;
+      letter-spacing: 1.2px; color: var(--text2);
+      margin-bottom: 0.5rem; font-weight: 500;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px; font-weight: 500;
+      margin-bottom: 2rem; line-height: 1.1;
+    }
+
+    /* ── SERVICES ── */
+    .service-grid {
+      display: flex; flex-direction: column; gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .service-card {
+      background: var(--bg);
+      padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: background 0.2s;
+    }
+    .service-card:active { background: var(--bg2); }
+    .service-icon {
+      width: 42px; height: 42px; min-width: 42px;
+      border-radius: 10px;
+      background: var(--green-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .service-info h3 { font-size: 14px; font-weight: 500; margin-bottom: 0.35rem; }
+    .service-info p { font-size: 12.5px; color: var(--text2); line-height: 1.65; font-weight: 300; }
+
+    /* ── PROCESS ── */
+    .steps {
+      display: flex; flex-direction: column;
+      border: 0.5px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .step {
+      padding: 1.5rem;
+      border-bottom: 0.5px solid var(--border);
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--bg);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px; font-weight: 400;
+      color: var(--green-light); line-height: 1;
+      min-width: 44px;
+    }
+    .step h4 { font-size: 14px; font-weight: 500; margin-bottom: 0.35rem; }
+    .step p { font-size: 12.5px; color: var(--text2); line-height: 1.65; font-weight: 300; }
+
+    /* ── TESTIMONIALS ── */
+    .testi-grid { display: flex; flex-direction: column; gap: 12px; }
+    .testi-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: 14px; padding: 1.5rem;
+    }
+    .testi-stars { color: var(--green); font-size: 14px; letter-spacing: 2px; margin-bottom: 0.75rem; }
+    .testi-text {
+      font-size: 13.5px; line-height: 1.75;
+      color: var(--text2); font-weight: 300;
+      font-style: italic; margin-bottom: 1rem;
+    }
+    .testi-author { font-size: 13px; font-weight: 500; }
+    .testi-country { font-size: 11px; color: var(--text2); margin-top: 2px; }
+
+    /* ── CTA ── */
+    .cta-section {
+      margin: 0 1.25rem 3rem;
+      background: var(--green-dark);
+      border-radius: 18px;
+      padding: 3rem 1.5rem; text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; color: #fff;
+      font-weight: 500; margin-bottom: 0.75rem;
+    }
+    .cta-section p {
+      font-size: 14px; color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem; font-weight: 300; line-height: 1.65;
+    }
+    .btn-white {
+      background: #fff; color: var(--green-dark);
+      padding: 15px 28px; border-radius: 100px;
+      font-size: 14px; font-weight: 500;
+      border: none; cursor: pointer; width: 100%;
+      transition: opacity 0.2s;
+    }
+    .btn-white:active { opacity: 0.85; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 1.5rem; right: 1.25rem;
+      background: #25d366; color: #fff;
+      width: 54px; height: 54px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      z-index: 200; text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .wa-float:active { transform: scale(0.94); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 600;
+    }
+    .footer-logo span { color: var(--green); }
+    .footer-copy { font-size: 11px; color: var(--text2); }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; font-size: 12px; color: var(--text2); }
+    .footer-links a { text-decoration: none; color: inherit; }
+
+    /* ── DESKTOP UPGRADE ── */
+    @media (min-width: 768px) {
+      nav { padding: 1.2rem 3rem; }
+      .nav-links-desktop {
+        display: flex; gap: 2.5rem;
+        font-size: 13px; color: var(--text2);
+        list-style: none;
+      }
+      .nav-links-desktop a { text-decoration: none; color: inherit; }
+      .nav-links-desktop a:hover { color: var(--text); }
+
+      .hero { padding: 6rem 3rem 5rem; max-width: 860px; margin: 0 auto; }
+      .hero h1 { font-size: 68px; }
+      .hero-actions { flex-direction: row; justify-content: center; }
+      .btn-primary, .btn-ghost { width: auto; }
+
+      .trust-bar { grid-template-columns: repeat(4, 1fr); padding: 1.5rem 3rem; }
+
+      .section { padding: 4.5rem 3rem; max-width: 920px; margin: 0 auto; }
+      .section-title { font-size: 40px; }
+
+      .service-grid { display: grid; grid-template-columns: repeat(3,1fr); }
+      .service-card { flex-direction: column; }
+      .service-icon { margin-bottom: 1rem; }
+
+      .steps { flex-direction: row; }
+      .step { flex-direction: column; border-bottom: none; border-right: 0.5px solid var(--border); }
+      .step:last-child { border-right: none; }
+
+      .testi-grid { display: grid; grid-template-columns: 1fr 1fr; }
+
+      .cta-section { margin: 0 3rem 4rem; padding: 4rem 3rem; }
+      .cta-section h2 { font-size: 42px; }
+      .btn-white { width: auto; }
+
+      footer { flex-direction: row; justify-content: space-between; align-items: center; padding: 1.75rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">Visa<span>Pro</span></div>
+    <ul class="nav-links-desktop" style="display:none">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+    </ul>
+    <button class="nav-cta">Book Consultation</button>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge">✦ Trusted by 2000+ applicants</div>
+    <h1>Your visa,<br/>handled <em>right.</em></h1>
+    <p>Expert visa consultancy for travel, business, and immigration - handled with precision and care from day one.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">Start Your Application →</button>
+      <button class="btn-ghost">See How It Works</button>
+    </div>
+  </div>
+
+  <div class="trust-bar">
+    <div class="trust-item"><div class="num">98%</div><div class="lbl">Approval Rate</div></div>
+    <div class="trust-item"><div class="num">2000+</div><div class="lbl">Visas Processed</div></div>
+    <div class="trust-item"><div class="num">50+</div><div class="lbl">Countries</div></div>
+    <div class="trust-item"><div class="num">8 yrs</div><div class="lbl">Experience</div></div>
+  </div>
+
+  <div class="section" id="services">
+    <div class="section-label">What we handle</div>
+    <div class="section-title">Every type of visa,<br/>one place.</div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon">✈️</div>
+        <div class="service-info">
+          <h3>Tourist Visa</h3>
+          <p>Schengen, USA, UK, UAE and 40+ countries. We handle the paperwork, you plan the trip.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💼</div>
+        <div class="service-info">
+          <h3>Business Visa</h3>
+          <p>Fast-tracked business visa with full documentation support and interview prep.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <div class="service-info">
+          <h3>Student Visa</h3>
+          <p>University-specific guidance for Canada, UK, Australia and more.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏡</div>
+        <div class="service-info">
+          <h3>PR & Immigration</h3>
+          <p>Permanent residency pathways for Canada, Australia, and New Zealand.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👨‍👩‍👧</div>
+        <div class="service-info">
+          <h3>Family Visa</h3>
+          <p>Spouse, dependent, and family reunion visa support handled with care.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔄</div>
+        <div class="service-info">
+          <h3>Visa Renewal</h3>
+          <p>Smooth, timely renewal so you never face overstay or last-minute stress.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="process">
+    <div class="section-label">The process</div>
+    <div class="section-title">Simple. Fast.<br/>Sorted.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h4>Free Consultation</h4>
+          <p>Tell us your destination and purpose. We assess your profile for free.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h4>Document Checklist</h4>
+          <p>We give you a precise list. No guesswork, no missing papers.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h4>We File It</h4>
+          <p>Our team reviews, prepares, and submits your application.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <h4>Visa Approved</h4>
+          <p>We track your status and notify you the moment it's ready.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="testimonials">
+    <div class="section-label">What clients say</div>
+    <div class="section-title">Real results.</div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Got my Schengen visa in 8 days. The team was super professional, no back and forth. Will use again."</div>
+        <div class="testi-author">Rahul M.</div>
+        <div class="testi-country">Bangalore → Germany</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"My Canada PR felt impossible. They broke it down and I got my approval in 6 months."</div>
+        <div class="testi-author">Priya S.</div>
+        <div class="testi-country">Hyderabad → Canada</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Business visa for UAE sorted in 3 days. Extremely responsive. Exactly what I needed."</div>
+        <div class="testi-author">Arun K.</div>
+        <div class="testi-country">Chennai → Dubai</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Transparent fees, clear process, no hidden charges. Refreshing to deal with honest people."</div>
+        <div class="testi-author">Meena R.</div>
+        <div class="testi-country">Mumbai → UK</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section" id="contact">
+    <h2>Ready to apply?</h2>
+    <p>Book a free 20-minute consultation.<br/>No commitment, just clarity.</p>
+    <button class="btn-white">Book Free Consultation →</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Visa<span>Pro</span></div>
+    <div class="footer-copy">© 2025 VisaPro Consultancy</div>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating button -->
+  <a class="wa-float" href="https://wa.me/919999999999" target="_blank" title="Chat on WhatsApp">💬</a>
+
+  <script>
+    // Show desktop nav links on larger screens
+    if (window.innerWidth >= 768) {
+      document.querySelector('.nav-links-desktop').style.display = 'flex';
+    }
+  </script>
+
+</body>
+</html>

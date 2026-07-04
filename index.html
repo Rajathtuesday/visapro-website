@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VisaPro Consultancy</title>
+  <title>Escape Tour and Travels</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -51,10 +51,61 @@
     }
     .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; }
     .nav-logo span { color: var(--green); }
+
+    /* hamburger */
+    .hamburger {
+      display: flex; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 1.5px;
+      background: var(--text); border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* mobile drawer */
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 57px; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      flex-direction: column;
+      padding: 2rem 1.5rem;
+      border-top: 0.5px solid var(--border);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 500;
+      color: var(--text); text-decoration: none;
+      padding: 0.75rem 0;
+      border-bottom: 0.5px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-of-type { border-bottom: none; }
+    .mobile-menu a:active { color: var(--green); }
+    .mobile-menu-cta {
+      margin-top: auto;
+      background: var(--green-dark); color: #fff;
+      padding: 16px; border-radius: 100px;
+      font-size: 14px; font-weight: 500;
+      border: none; cursor: pointer; width: 100%;
+      text-align: center;
+    }
+    .mobile-menu-badge {
+      font-size: 11px; color: var(--text2);
+      text-align: center; margin-top: 1rem;
+      letter-spacing: 0.3px;
+    }
+
     .nav-cta {
       font-size: 12px; font-weight: 500; padding: 8px 18px;
       border: 0.5px solid var(--text); border-radius: 100px;
       background: transparent; cursor: pointer; transition: all 0.2s;
+      display: none;
     }
     .nav-cta:hover, .nav-cta:active { background: var(--text); color: #fff; }
 
@@ -160,7 +211,7 @@
       display: flex; align-items: flex-start; gap: 1rem; background: var(--bg);
     }
     .step:last-child { border-bottom: none; }
-    .step-num { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400; color: var(--green); line-height: 1; min-width: 44px; opacity: 0.35; }
+    .step-num { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 400; color: var(--green-light); line-height: 1; min-width: 44px; }
     .step h4 { font-size: 14px; font-weight: 500; margin-bottom: 0.35rem; }
     .step p { font-size: 12.5px; color: var(--text2); line-height: 1.65; font-weight: 300; }
 
@@ -258,22 +309,36 @@
 <body>
 
   <nav>
-    <div class="nav-logo">Visa<span>Pro</span></div>
+    <div class="nav-logo">Escape Tour<span> & Travels</span></div>
     <ul class="nav-links-desktop" style="display:none">
       <li><a href="#why">Why Us</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#process">How It Works</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <button class="nav-cta" onclick="window.open('https://wa.me/919999999999')">Book Consultation</button>
+    <button class="nav-cta" onclick="window.open('https://wa.me/919916405012')">Book Consultation</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#why" onclick="closeMenu()">Why Us</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#process" onclick="closeMenu()">How It Works</a>
+    <a href="#testimonials" onclick="closeMenu()">Reviews</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <button class="mobile-menu-cta" onclick="window.open('https://wa.me/919916405012'); closeMenu()">Book Free Consultation →</button>
+    <div class="mobile-menu-badge">✦ Trusted by 2000+ applicants</div>
+  </div>
 
   <div class="hero">
     <div class="hero-badge">✦ Trusted by 2000+ applicants</div>
     <h1>Your visa,<br/>handled <em>right.</em></h1>
-    <p>Expert visa consultancy for travel, business, and immigration — handled with precision and care from day one.</p>
+    <p>Expert visa consultancy for travel, business, and immigration - handled with precision and care from day one.</p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="window.open('https://wa.me/919999999999')">Start Your Application →</button>
+      <button class="btn-primary" onclick="window.open('https://wa.me/919916405012')">Start Your Application →</button>
       <button class="btn-ghost" onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'})">See How It Works</button>
     </div>
   </div>
@@ -450,15 +515,15 @@
       </div>
       <div class="faq-item">
         <button class="faq-question">What documents do I need? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">It depends on your destination and visa type. Once you contact us, we give you a precise checklist tailored to your application — no guesswork involved.</div>
+        <div class="faq-answer">It depends on your destination and visa type. Once you contact us, we give you a precise checklist tailored to your application - no guesswork involved.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question">Do you guarantee visa approval? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">No consultant can legally guarantee a visa — that decision belongs to the embassy. But our 98% approval rate speaks for itself. We only submit applications we're confident about.</div>
+        <div class="faq-answer">No consultant can legally guarantee a visa - that decision belongs to the embassy. But our 98% approval rate speaks for itself. We only submit applications we're confident about.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question">How much do your services cost? <span class="faq-icon">+</span></button>
-        <div class="faq-answer">Our fees depend on the visa type and destination. We're always transparent — no hidden charges. Contact us for a free consultation and we'll give you a clear quote upfront.</div>
+        <div class="faq-answer">Our fees depend on the visa type and destination. We're always transparent - no hidden charges. Contact us for a free consultation and we'll give you a clear quote upfront.</div>
       </div>
       <div class="faq-item">
         <button class="faq-question">Can you help if my visa was rejected before? <span class="faq-icon">+</span></button>
@@ -475,8 +540,8 @@
   </div>
 
   <footer>
-    <div class="footer-logo">Visa<span>Pro</span></div>
-    <div class="footer-copy">© 2025 VisaPro Consultancy. All rights reserved.</div>
+    <div class="footer-logo">Escape Tour<span> & Travels</span></div>
+    <div class="footer-copy">© 2026 Escape Tour and Travels. All rights reserved.</div>
     <div class="footer-links">
       <a href="#">Privacy</a>
       <a href="#">Terms</a>
@@ -494,7 +559,21 @@
     // Desktop nav
     if (window.innerWidth >= 768) {
       document.querySelector('.nav-links-desktop').style.display = 'flex';
+      document.getElementById('hamburger').style.display = 'none';
+      document.querySelector('.nav-cta').style.display = 'block';
     }
+
+    // Hamburger toggle
+    function closeMenu() {
+      document.getElementById('hamburger').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('hamburger').addEventListener('click', () => {
+      const isOpen = document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
 
     // Scroll fade-in
     const observer = new IntersectionObserver((entries) => {

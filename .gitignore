@@ -1,7 +1,7 @@
 
-".refact" 
 
 
 git add .gitignore
-git commit -m "updating the tel numbers on the website"
+git commit -m "updating the tel numbers on the websit"
 git push
+.refact/

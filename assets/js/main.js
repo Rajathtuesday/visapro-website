@@ -1,17 +1,15 @@
-// Escape Tour and Travels — shared behavior for every page.
+// Escape Tour and Travels: shared behavior for every page.
 // Nav "active" state is set per-page via a plain `active` class in the
 // HTML (simplest and most robust for a static, no-build site) rather
 // than detected here from the URL.
-
-// Desktop nav
-if (window.innerWidth >= 768) {
-  const desktopLinks = document.querySelector('.nav-links-desktop');
-  const hamburger = document.getElementById('hamburger');
-  const navCta = document.querySelector('.nav-cta');
-  if (desktopLinks) desktopLinks.style.display = 'flex';
-  if (hamburger) hamburger.style.display = 'none';
-  if (navCta) navCta.style.display = 'block';
-}
+//
+// Desktop vs mobile nav visibility (.nav-links-desktop / .hamburger /
+// .nav-cta / .mobile-menu) is handled entirely by CSS media queries in
+// style.css, not JS -- a one-time `if (window.innerWidth >= 768)` check
+// used to live here, which only ever ran once at page load and had no
+// resize listener, so the desktop nav stayed stuck visible (as raw,
+// unstyled markup, since its actual styling only exists inside the
+// desktop media query) any time the viewport changed afterward.
 
 // Hamburger toggle
 function closeMenu() {

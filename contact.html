@@ -35,7 +35,7 @@
 
   <nav>
     <a href="index.html" class="nav-logo">Escape Tour<span> &amp; Travels</span></a>
-    <ul class="nav-links-desktop" style="display:none">
+    <ul class="nav-links-desktop">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li class="has-sub">
@@ -81,7 +81,7 @@
     <div class="contact-cards">
       <a href="https://wa.me/919916405012" target="_blank" class="contact-card">
         <div class="why-icon">💬</div>
-        <div><h3>WhatsApp</h3><p>Fastest way to reach us — usually a reply within minutes.</p></div>
+        <div><h3>WhatsApp</h3><p>Fastest way to reach us, usually a reply within minutes.</p></div>
       </a>
       <a href="tel:+919916405012" class="contact-card">
         <div class="why-icon">📞</div>
@@ -95,7 +95,7 @@
 
     <div class="section-label">Or send us your details</div>
     <div class="section-title">We'll get back<br/>to you on WhatsApp.</div>
-    <p class="section-intro">Fill this in and it opens a pre-filled WhatsApp message to us — usually the fastest way to hear back. Prefer email? Reach us directly at <a href="mailto:info@escapetour.in" style="color:var(--green);">info@escapetour.in</a>.</p>
+    <p class="section-intro">Fill this in and it opens a pre-filled WhatsApp message to us, usually the fastest way to hear back. Prefer email? Reach us directly at <a href="mailto:info@escapetour.in" style="color:var(--green);">info@escapetour.in</a>.</p>
 
     <form class="contact-form" id="contactForm">
       <label for="cf-name">Name</label>
@@ -141,9 +141,8 @@
 
   <script src="assets/js/main.js"></script>
   <script>
-    // No backend and no confirmed business email exists for this site —
-    // routing the "form" through a pre-filled WhatsApp message instead of
-    // a mailto: to an address nobody would actually be checking.
+    // No CRM/backend exists for this site, so this routes through a
+    // pre-filled WhatsApp message instead of a plain mailto: submit.
     document.getElementById('contactForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const name = document.getElementById('cf-name').value.trim();

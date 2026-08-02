@@ -1,0 +1,10 @@
+# Controls what Cloudflare uploads as public static assets (wrangler deploy).
+# .gitignore only controls what's committed -- it does NOT stop wrangler from
+# uploading .git/ itself, since .git/ isn't gitignored (it can't be). Without
+# this file, the entire git history/config was being served publicly.
+.git/
+.wrangler/
+.refact/
+.gitignore
+.assetsignore
+README.md

@@ -23,7 +23,7 @@ Shared assets:
 
 ## SEO / local search
 
-- **Real business address** is live: `Do 11/84, 8th Main Road, 3rd Block East, Jayanagar, Bangalore, Karnataka 560011` — in the `TravelAgency` JSON-LD `PostalAddress` on `index.html` and `contact.html`, a visible "Visit Us" card + Maps link on `contact.html`, and the footer on every page (NAP consistency).
+- **Real business address** is live: `11/84, 8th Main Road, 3rd Block East, Jayanagar, Bangalore, Karnataka 560011` — in the `TravelAgency` JSON-LD `PostalAddress` on `index.html` and `contact.html`, a visible "Visit Us" card + Maps link on `contact.html`, and the footer on every page (NAP consistency).
 - `geo.region`/`geo.placename` meta tags added at locality level. No precise lat/long coordinates are set — a lookup only returned neighborhood-level coordinates, not the exact building, and a wrong pin would hurt local SEO more than an absent one. Add real coordinates once available from a verified Google Business Profile listing, or a precise geocode of the exact address.
 
 ## Remaining open items

@@ -351,6 +351,9 @@ footer { border-top: 0.5px solid var(--border); padding: 1.5rem 1.25rem; text-al
 .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; }
 .footer-logo span { color: var(--green); }
 .footer-copy { font-size: 11px; color: var(--text2); }
+.footer-address { font-size: 11px; color: var(--text2); }
+.footer-address a { text-decoration: none; color: inherit; }
+.footer-address a:hover { color: var(--green); }
 .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.25rem 2rem; font-size: 12px; color: var(--text2); }
 .footer-links a { text-decoration: none; color: inherit; }
 .footer-links a:hover { color: var(--green); }
